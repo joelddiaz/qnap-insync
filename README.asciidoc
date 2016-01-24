@@ -1,4 +1,18 @@
 # qnap-insync
+
 A Docker container for the QNAP which uses insync (https://insynchq.com) to sync Google Drive to/from the QNAP.
 
 ## Setup
+
+. Install the QNAP Container Station (https://www.qnap.com/solution/container_station/en/).
+. Create a new container, and search for a container named 'qnap-insync'.
+. In the advanced settings area:
+.. Set the following environment variables:
+... INSYNC_AUTH to the auth code you get from https://goo.gl/jv797S
+... GDRIVE_PATH to the path you will mount the Google Drive contents/folder from the QNAP into this container (ie. /gdrive).
+.. In the Shared Folders area, mount the folder on the QNAP that holds/will hold the Google Drive contents into the path specified above.
+. Create/run the container.
+
+## Notes
+
+The QNAP containers are set up where they will stop and be restarted while saving their state (ie. they don't start freshly except for the first time you create it). If you delete and then create a new container, you will need to get a new auth code.
