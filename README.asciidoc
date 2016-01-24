@@ -1,0 +1,4 @@
+# qnap-insync
+A Docker container for the QNAP which uses insync (https://insynchq.com) to sync Google Drive to/from the QNAP.
+
+## Setup
