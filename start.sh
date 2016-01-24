@@ -1,6 +1,8 @@
 #!/bin/bash -x
 # vim: expandtab:tabstop=4:shiftwidth=4
 
+set -e
+
 if [ -e /root/first_boot_complete ] ; then
     # Because the QNAP containers get stoped then restarted (instead of starting 
     # cleanly each time), here we have been "restarted". No need to set up the
@@ -9,7 +11,7 @@ if [ -e /root/first_boot_complete ] ; then
 else
     if [ ! -v INSYNC_AUTH ] ; then
         echo "Set INSYNC_AUTH environment before launching"
-        echo "Go to https://goo.gl/jv797S to get the code"
+        echo "Go to https://goo.gl/jv797S to get a code"
         exit 10
     fi
 
