@@ -15,4 +15,7 @@ insync-headless start && sleep 2 && insync-headless pause_syncing && sleep 2
 
 insync-headless add_account -p /$GDRIVE_PATH -a $INSYNC_AUTH && sleep 2
 
-insync-headless start_syncing
+insync-headless resume_syncing
+
+echo "Looping forever so the container doesn't exit"
+while true ; do sleep 60 ; done
