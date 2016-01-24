@@ -8,7 +8,6 @@
 FROM debian:latest
 
 MAINTAINER <Joel>
-LABEL version="0.0.1"
 LABEL description="Container for running insync (https://insynchq.com/) on a QNAP device to sync your Google Drive"
 
 RUN apt-get update && apt-get install -y wget && apt-get clean
