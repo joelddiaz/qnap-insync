@@ -4,15 +4,16 @@ A Docker container for the QNAP which uses insync (https://insynchq.com) to sync
 
 ## Setup
 
+. Create a folder to hold the Google Drive contents through the QNAP's 'File Station' app (ie. 'GDrive').
 . Install the QNAP Container Station (https://www.qnap.com/solution/container_station/en/).
 . Create a new container, and search for a container named 'qnap-insync'.
-. In the advanced settings area:
-.. Set the following environment variables:
+. In the 'Advanced Settings' area:
+.. Create/set the following environment variables in the 'Environment' section:
 ... INSYNC_AUTH to the auth code you get from https://goo.gl/jv797S
-... GDRIVE_PATH to the path you will mount the Google Drive contents/folder from the QNAP into this container (ie. /gdrive).
-.. In the Shared Folders area, mount the folder on the QNAP that holds/will hold the Google Drive contents into the path specified above.
+... GDRIVE_PATH to the path you will mount the Google Drive contents/folder from the QNAP into this container. For example, if you are mounting the QNAP's /GDrive folder into the container's /insync-gdrive folder, then you would set GDRIVE_PATH to /insync-gdrive.
+.. In the 'Shared Folders' -> 'Volume from host / Mount Point' area, mount the folder from the QNAP that holds/will hold the Google Drive contents into the path specified above. From the above step, that would be selecting the /GDrive folder as the 'Host Path' into the container's 'Mount Point' of /insync-gdrive (read/write!).
 . Create/run the container.
 
 ## Notes
 
-The QNAP containers are set up where they will stop and be restarted while saving their state (ie. they don't start freshly except for the first time you create it). If you delete and then create a new container, you will need to get a new auth code.
+The QNAP containers are set up where they will stop and be restarted while saving their state (ie. they don't start freshly except for the first time you create it). If you delete and then create a new container, you will need to get a new auth code. The startup script for this container knows when it's being started from scratch vs being restarted and should just "do the right thing".
